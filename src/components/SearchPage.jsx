@@ -16,7 +16,7 @@ export default function SearchPage() {
 
   const [pageState, setPageState] = useState(null);
   const [searchResults, setSearchResullts] = useState(null);
-  const [searchQuery, setSearchQuery] = useState("chicken");
+  const [searchQuery, setSearchQuery] = useState("");
   const [imageLoading, setImageLoading] = useState(true);
   const [favRecipe, setFavRecipe] = useState([]);
 
@@ -25,14 +25,7 @@ export default function SearchPage() {
     navigate(`/${id}`);
   };
 
-  console.log(searchResults);
-
-  async function fetchData() {
-    if (searchQuery.length < 3) {
-      window.alert("Enter atleast 3 characters to search");
-      return;
-    }
-
+  async function fetchData(searchQuery) {
     setImageLoading(true);
     setPageState(PAGESTATE.LOADING);
     const options = {
@@ -78,7 +71,6 @@ export default function SearchPage() {
       }
     });
   };
-  console.log(favRecipe);
 
   return (
     <div className="bg-[url('/bg.jpg')] bg-cover bg-fixed min-h-[100vh] w-full flex flex-col items-center">
@@ -90,8 +82,8 @@ export default function SearchPage() {
             value={searchQuery}
             placeholder="Enter recipe"
             onChange={(e) => {
-              fetchData();
-              setSearchQuery(e.currentTarget.value);
+              fetchData(e.target.value);
+              setSearchQuery(e.target.value);
             }}
           ></input>
         </div>
