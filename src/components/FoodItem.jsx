@@ -8,12 +8,12 @@ import Loader from "./Loader";
 
 export default function FoodItem() {
   const [recipe, setRecipe] = useState();
-
   const [pageState, setPageState] = useState(null);
   const [imageLoading, setImageLoading] = useState(true);
 
   const { id } = useParams();
   let isFirst = true;
+
   async function fetchRecipe() {
     setPageState(PAGESTATE.LOADING);
     const options = {
@@ -61,23 +61,23 @@ export default function FoodItem() {
               <Img src="./goback.png" />
               Go back
             </Link>
-            <RecipeTitle>{recipe.label}</RecipeTitle>
+            <RecipeTitle>{recipe?.label}</RecipeTitle>
           </div>
 
           <div className="flex flex-col sm:flex-row items-center justify-between gap-12 sm:gap-24">
             <div className="sm:self-start self-center">
               <p className="mb-5 font-bold">
-                Source : <span className="underline">{recipe.source}</span>
+                Source : <span className="underline">{recipe?.source}</span>
               </p>
               {imageLoading && <Skeleton count={1} width={"500px"} height={"500px"} />}
-              {<RecipeImage src={recipe.image} alt={recipe.title} onLoad={handleImageLoad} style={{ display: `${imageLoading} ? "none" : "block"` }} />}
+              {<RecipeImage src={recipe?.image} alt={recipe?.title} onLoad={handleImageLoad} style={{ display: `${imageLoading} ? "none" : "block"` }} />}
             </div>
 
             <div>
               <Ingredients>
                 <h3>Ingredients:</h3>
                 <ul>
-                  {recipe.ingredients.map((ingredient, index) => (
+                  {recipe?.ingredients.map((ingredient, index) => (
                     <div className="flex gap-5 mb-5" key={index}>
                       {imageLoading && <Skeleton count={1} width={"40px"} height={"40px"} baseColor="grey" />} {<img src={ingredient.image} onLoad={handleImageLoad} style={{ display: `${imageLoading} ? "none" : "block"` }} />}
                       <li key={index}>{ingredient.text}</li>
@@ -87,7 +87,7 @@ export default function FoodItem() {
               </Ingredients>
               <Instructions>
                 <h3>Cooking Instructions:</h3>
-                <a href={recipe.url} target="_blank" rel="noopener noreferrer">
+                <a href={recipe?.url} target="_blank" rel="noopener noreferrer">
                   View Full Instructions
                 </a>
               </Instructions>
