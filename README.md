@@ -20,19 +20,19 @@ Hosted Link : https://recipe-finder-ten-umber.vercel.app/
 
 ### Home Page
 
-![Home Page](/sceenshots/homePage.png)
+![Home Page](/public/homePage.png)
 
 ### Search
 
-![Search](/screenshots/recipeSearch.png)
+![Search](/public/recipeSearch.png)
 
 ### Recipe Page
 
-![Recipe Page](/screenshots/recipePage.png)
+![Recipe Page](/public/recipePage.png)
 
 ### Save
 
-![Save](/screenshots/recipeSave.png)
+![Save](/public/recipeSave.png)
 
 ## Getting Started
 
